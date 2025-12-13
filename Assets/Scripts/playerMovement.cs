@@ -6,7 +6,9 @@ public class playerMovement : MonoBehaviour
     private float horizontalInput;
     [SerializeField] private float playerSpeed = 5f;
     [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float dashForce = 10f;
     bool isJumping = false;
+    bool isDashing = false;
 
     Rigidbody2D rb;
 
@@ -27,8 +29,14 @@ public class playerMovement : MonoBehaviour
         
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             isJumping = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isJumping && !isDashing)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, dashForce);
+            isDashing = true;
         }
     }
 
@@ -40,5 +48,6 @@ public class playerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)//when touching platform, logs as on ground
     {
         isJumping = false;
+        isDashing = false;
     }
 }
