@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - dropOffBox
+  - collisionGrid
   layers:
   - Default
   - TransparentFX
