@@ -40,13 +40,22 @@ public class dragDrop : MonoBehaviour
         Debug.Log("released");
         Debug.Log(collider.gameObject.CompareTag("collisionGrid"));
 
-
-        if (collider.gameObject.CompareTag("collisionGrid") && !mouseDown)
+        if (piece.transform.position.x < collisionGrid.transform.position.x + 0.3f &&
+            piece.transform.position.x > collisionGrid.transform.position.x - 0.3f &&
+            piece.transform.position.y < collisionGrid.transform.position.y + 0.3f &&
+            piece.transform.position.y > collisionGrid.transform.position.y - 0.3f)
         {
             piece.transform.position = collisionGrid.transform.position;
-            Debug.Log("should be snapping");
-
+            Debug.Log("snapped");
         }
+
+
+        //if (collider.gameObject.CompareTag("collisionGrid") && !mouseDown)
+        //{
+        //    piece.transform.position = collisionGrid.transform.position;
+        //    Debug.Log("should be snapping");
+
+        //}
     }
 
     //private void OnCollisionEnter2D(Collision2D other)

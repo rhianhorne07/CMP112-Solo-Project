@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class dropOffPuzzle : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class dropOffPuzzle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && pieceCounter == 9)
         {
-            test = 100;
+            SceneManager.LoadScene(1);
         }
     }
 }
