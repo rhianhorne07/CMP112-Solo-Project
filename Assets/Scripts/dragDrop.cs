@@ -7,13 +7,19 @@ public class dragDrop : MonoBehaviour
     private Camera camera;
     public GameObject piece;
     public GameObject collisionGrid;
-    private bool mouseDown = false;
-    private BoxCollider2D collider;
+    public GameObject winDetectionObj;
+    winDetection winDetectionScript;
+
 
     private void Awake()
     {
         camera = Camera.main;
-        collider = GetComponent<BoxCollider2D>();
+
+    }
+
+    private void Start()
+    {
+        winDetectionScript = winDetectionObj.GetComponent<winDetection>();
     }
     private Vector3 getMousePos()
     {
@@ -25,46 +31,31 @@ public class dragDrop : MonoBehaviour
     private void OnMouseDown()
     {
         dragOffset = transform.position - getMousePos();
-        mouseDown = true;
+
     }
 
     private void OnMouseDrag()
     {
         transform.position = getMousePos() + dragOffset;
-        mouseDown = true;
+
     }
 
     private void OnMouseUp()
     {
-        mouseDown = false;
-        Debug.Log("released");
-        Debug.Log(collider.gameObject.CompareTag("collisionGrid"));
 
-        if (piece.transform.position.x < collisionGrid.transform.position.x + 0.3f &&
+
+        if (piece.transform.position.x < collisionGrid.transform.position.x + 0.3f &&     //if draggable piece is close enough to grid, snap to position
             piece.transform.position.x > collisionGrid.transform.position.x - 0.3f &&
             piece.transform.position.y < collisionGrid.transform.position.y + 0.3f &&
             piece.transform.position.y > collisionGrid.transform.position.y - 0.3f)
         {
             piece.transform.position = collisionGrid.transform.position;
-            Debug.Log("snapped");
+
+            winDetectionScript.piecesCorrect += 1;
         }
 
-
-        //if (collider.gameObject.CompareTag("collisionGrid") && !mouseDown)
-        //{
-        //    piece.transform.position = collisionGrid.transform.position;
-        //    Debug.Log("should be snapping");
-
-        //}
     }
 
-    //private void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    Debug.Log(other.gameObject.CompareTag("collisionGrid"));
-    //    Debug.Log("colliding");
-
-
-    //}
 
 
 }
