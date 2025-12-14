@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class killPlayer : MonoBehaviour
 {
-    public GameObject character;
+    public GameObject character;    
     public Transform respawnPoint;
-    public int test;
+    private AudioSource source;
+    public AudioClip dieSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))     //if player falls out map
         {
-            character.transform.position = respawnPoint.position;
+            source.PlayOneShot(dieSound, 1f);
+            character.transform.position = respawnPoint.position;       //set back to start
         }
     }
 }

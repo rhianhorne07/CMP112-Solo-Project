@@ -3,28 +3,25 @@ using UnityEngine;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public Transform[] spawnPoints;
-    private int[] alreadyUsed;
-
-
+    public Transform[] spawnPoints; 
 
     void Start()
     {
         int numEnemies = Random.Range(5, 10);      //will spawn between 5 and 9 enemies
         //will randomly chose spawn point
 
-        for (int x = 0; x < numEnemies; x++)
+        for (int x = 0; x < numEnemies; x++)     //spawns that number of enemies
         {
-            int PlaceToSpawn = Random.Range(0, spawnPoints.Length);
+            int PlaceToSpawn = Random.Range(0, spawnPoints.Length);     //randomises spawnpoints
             Transform spawnPoint = spawnPoints[PlaceToSpawn];
 
-            if (spawnPoints[PlaceToSpawn] == null)
+            if (spawnPoints[PlaceToSpawn] == null)    //if already used
             {
                 x--;  //try again
             }
             else
             {
-                Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+                Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);  //spawn
                 spawnPoints[PlaceToSpawn] = null; //mark this spawn point as used
             }
 

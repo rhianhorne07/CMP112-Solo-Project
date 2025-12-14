@@ -6,6 +6,8 @@ TagManager:
   tags:
   - dropOffBox
   - collisionGrid
+  - spawnPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX

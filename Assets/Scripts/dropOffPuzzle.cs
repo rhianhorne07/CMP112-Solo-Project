@@ -20,9 +20,9 @@ public class dropOffPuzzle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && pieceCounter == 9)
+        if (collision.gameObject.CompareTag("Player") && pieceCounter == 9)   //if all pieces collected
         {
-            SceneManager.LoadScene("dragAndDrop");
+            SceneManager.LoadScene("dragAndDrop");    //open next level
         }
     }
 }

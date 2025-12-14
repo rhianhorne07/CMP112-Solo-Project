@@ -4,28 +4,29 @@ using UnityEngine;
 public class pickupPuzzle : MonoBehaviour
 {
 
-    public GameObject puzzlePiece;
-    public GameObject dropOffBox;
-    dropOffPuzzle dropOffScript;
+    public GameObject puzzlePiece;    //what number grid this puzzle piece is 
+    public GameObject dropOffBox;     //links drop off box object to access its script
+    dropOffPuzzle dropOffScript;     //links puzzle drop script
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    
     void Start()
     {
-        dropOffScript = dropOffBox.GetComponent<dropOffPuzzle>();
+        dropOffScript = dropOffBox.GetComponent<dropOffPuzzle>();       //links puzzle drop script
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+
+
+        if (collision.gameObject.CompareTag("Player"))    //if player hits puzzle piece
         {
-            puzzlePiece.SetActive(false);
-            dropOffScript.pieceCounter += 1;
+            puzzlePiece.SetActive(false);                       //deactivate
+            dropOffScript.pieceCounter += 1;                    //itterate counter in dropoff script
+
         }
     }
 }
