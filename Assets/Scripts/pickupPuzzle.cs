@@ -8,10 +8,16 @@ public class pickupPuzzle : MonoBehaviour
     public GameObject dropOffBox;
     dropOffPuzzle dropOffScript;
 
+    private AudioSource source;
+    public AudioClip pickupSound;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         dropOffScript = dropOffBox.GetComponent<dropOffPuzzle>();
+        source = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -24,8 +30,10 @@ public class pickupPuzzle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            source.PlayOneShot(pickupSound, 1f);
             puzzlePiece.SetActive(false);
             dropOffScript.pieceCounter += 1;
+
         }
     }
 }

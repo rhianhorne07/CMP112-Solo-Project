@@ -12,6 +12,7 @@ public class playerMovement : MonoBehaviour
     public Transform respawnPoint;
     private AudioSource source;
     public AudioClip jumpSound;
+    public AudioClip dieSound;
    // public GameObject character;
 
 
@@ -71,7 +72,9 @@ public class playerMovement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            source.PlayOneShot(dieSound, 1f);
             transform.position = respawnPoint.transform.position;
+
         }
     }
 }
