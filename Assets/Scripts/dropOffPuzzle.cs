@@ -22,7 +22,7 @@ public class dropOffPuzzle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && pieceCounter == 9)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("dragAndDrop");
         }
     }
 }
