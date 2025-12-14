@@ -3,15 +3,14 @@ using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float enemySpeed = -2f;
-    private Vector2 startPos;
+    [SerializeField] private float enemySpeed = 1f;
+
 
     Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -19,15 +18,14 @@ public class EnemyMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(enemySpeed, rb.linearVelocity.y);
 
-        if (transform.position.x == startPos.x + 1f) 
-        {
-            enemySpeed = -enemySpeed;
-        }
-        else if (transform.position.x == startPos.x)
-        {
-            enemySpeed = -enemySpeed;
-        }
+    }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("spawnPoint"))
+        {
+            enemySpeed = -enemySpeed;
+        }
 
     }
 }

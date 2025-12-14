@@ -4,7 +4,7 @@ public class killPlayer : MonoBehaviour
 {
     public GameObject character;
     public Transform respawnPoint;
-    public int test;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 

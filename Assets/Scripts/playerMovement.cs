@@ -9,6 +9,8 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private float dashForce = 10f;
     bool isJumping = false;
     bool isDashing = false;
+    public Transform respawnPoint;
+   // public GameObject character;
 
 
     Rigidbody2D rb;
@@ -60,5 +62,10 @@ public class playerMovement : MonoBehaviour
     {
         isJumping = false;
         isDashing = false;
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            transform.position = respawnPoint.transform.position;
+        }
     }
 }
