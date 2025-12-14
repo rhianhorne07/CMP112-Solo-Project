@@ -31,21 +31,21 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");   //get input
         
         
         
-        if (Input.GetButtonDown("Jump") && !isJumping)
+        if (Input.GetButtonDown("Jump") && !isJumping)     //if jump button pressed
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);   //jump
             isJumping = true;
             source.PlayOneShot(jumpSound, 1f);
 
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isJumping && !isDashing)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isJumping && !isDashing)    //if already jumping and dash pressed
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, dashForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, dashForce);  //dash
             isDashing = true;
             source.PlayOneShot(jumpSound, 1f);
         }
@@ -53,9 +53,9 @@ public class playerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontalInput * playerSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(horizontalInput * playerSpeed, rb.linearVelocity.y);    //horizontal movement
 
-        if (horizontalInput > 0)
+        if (horizontalInput > 0)                //flip sprite to face correct way
         {
             spriteRenderer.flipX = false;
         }
@@ -70,7 +70,7 @@ public class playerMovement : MonoBehaviour
         isJumping = false;
         isDashing = false;
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))                    //if player hits enemy, respawn
         {
             source.PlayOneShot(dieSound, 1f);
             transform.position = respawnPoint.transform.position;

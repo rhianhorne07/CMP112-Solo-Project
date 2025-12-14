@@ -16,9 +16,9 @@ public class winDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (piecesCorrect==9)
+        if (piecesCorrect==9)                       //if all 9 puzzles correct
         {
-            SceneManager.LoadScene("winScreen");
+            SceneManager.LoadScene("winScreen");     //open win screen
         }
     }
 }

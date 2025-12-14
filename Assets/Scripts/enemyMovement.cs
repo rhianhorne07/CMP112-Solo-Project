@@ -16,15 +16,15 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = new Vector2(enemySpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(enemySpeed, rb.linearVelocity.y);   //moves
 
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("spawnPoint"))
+        if (collision.gameObject.CompareTag("spawnPoint"))   //when hit edge of platform
         {
-            enemySpeed = -enemySpeed;
+            enemySpeed = -enemySpeed;    //turns
         }
 
     }

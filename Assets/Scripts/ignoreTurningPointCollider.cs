@@ -20,7 +20,7 @@ public class ignoreTurningPointCollider : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))    //if player hits edge of platform, let them in
         {
             spawnPointCollider1.isTrigger = true;
 

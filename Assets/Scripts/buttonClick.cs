@@ -5,9 +5,9 @@ public class buttonClick : MonoBehaviour
 {
 
 
-    private void OnMouseDown()
+    private void OnMouseDown()   //when clicked
     {
-        SceneManager.LoadScene("Platformer");
+        SceneManager.LoadScene("Platformer");   //open platformer 
 
     }
 }

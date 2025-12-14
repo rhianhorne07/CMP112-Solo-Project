@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class killPlayer : MonoBehaviour
 {
-    public GameObject character;
+    public GameObject character;    
     public Transform respawnPoint;
     private AudioSource source;
     public AudioClip dieSound;
@@ -16,10 +16,10 @@ public class killPlayer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))     //if player falls out map
         {
             source.PlayOneShot(dieSound, 1f);
-            character.transform.position = respawnPoint.position;
+            character.transform.position = respawnPoint.position;       //set back to start
         }
     }
 }
