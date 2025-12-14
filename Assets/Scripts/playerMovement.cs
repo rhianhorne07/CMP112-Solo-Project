@@ -10,6 +10,8 @@ public class playerMovement : MonoBehaviour
     bool isJumping = false;
     bool isDashing = false;
     public Transform respawnPoint;
+    private AudioSource source;
+    public AudioClip jumpSound;
    // public GameObject character;
 
 
@@ -20,6 +22,7 @@ public class playerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        source = GetComponent<AudioSource>();
 
 
     }
@@ -35,6 +38,8 @@ public class playerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             isJumping = true;
+            source.PlayOneShot(jumpSound, 1f);
+
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && isJumping && !isDashing)
