@@ -46,6 +46,7 @@ public class playerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, dashForce);
             isDashing = true;
+            source.PlayOneShot(jumpSound, 1f);
         }
     }
 
