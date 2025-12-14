@@ -8,7 +8,7 @@ public class pickupPuzzle : MonoBehaviour
     public GameObject dropOffBox;
     dropOffPuzzle dropOffScript;
 
-    private AudioSource source;
+    private AudioSource sourcex;
     public AudioClip pickupSound;
 
 
@@ -16,7 +16,7 @@ public class pickupPuzzle : MonoBehaviour
     void Start()
     {
         dropOffScript = dropOffBox.GetComponent<dropOffPuzzle>();
-        source = GetComponent<AudioSource>();
+        sourcex = GetComponent<AudioSource>();
 
     }
 
@@ -28,9 +28,11 @@ public class pickupPuzzle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+
         if (collision.gameObject.CompareTag("Player"))
         {
-            source.PlayOneShot(pickupSound, 1f);
+            sourcex.PlayOneShot(pickupSound, 1f);
             puzzlePiece.SetActive(false);
             dropOffScript.pieceCounter += 1;
 
