@@ -4,8 +4,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public Transform[] spawnPoints;
-    private int[] alreadyUsed;
-
 
 
     void Start()
@@ -15,7 +13,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         for (int x = 0; x < numEnemies; x++)
         {
-            int PlaceToSpawn = Random.Range(0, spawnPoints.Length);
+            int PlaceToSpawn = Random.Range(0, 17);
             Transform spawnPoint = spawnPoints[PlaceToSpawn];
 
             if (spawnPoints[PlaceToSpawn] == null)
