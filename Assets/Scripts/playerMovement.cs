@@ -10,12 +10,14 @@ public class playerMovement : MonoBehaviour
     bool isJumping = false;
     bool isDashing = false;
 
-    Rigidbody2D rb;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    Rigidbody2D rb;
+    SpriteRenderer spriteRenderer;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
 
     }
@@ -43,6 +45,15 @@ public class playerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(horizontalInput * playerSpeed, rb.linearVelocity.y);
+
+        if (horizontalInput > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (horizontalInput < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)//when touching platform, logs as on ground
