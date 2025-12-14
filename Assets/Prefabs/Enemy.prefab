@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8014088311846994462}
   - component: {fileID: 2184971137162653723}
   - component: {fileID: 5389436468787826917}
+  - component: {fileID: 5718211077589255059}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -153,3 +154,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0009949573, y: 0.05544268}
   m_Size: {x: 1.8877265, y: 1.8596604}
   m_Direction: 1
+--- !u!114 &5718211077589255059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631426405322594196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b139e9d92403e4ebab025c82e36ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpeed: 3
+  startPos: {x: 0, y: 0, z: 0}
